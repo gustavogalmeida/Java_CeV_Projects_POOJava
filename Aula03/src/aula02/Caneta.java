@@ -14,7 +14,7 @@ public class Caneta {
         }
     }
     
-    protected void tampar(){
+    private void tampar(){
         this.tampada=true;
     }
     

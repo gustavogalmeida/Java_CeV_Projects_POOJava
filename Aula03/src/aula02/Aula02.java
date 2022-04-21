@@ -8,6 +8,5 @@ public class Aula02 {
         // c1.ponta = 0.5f; ponta é privado
         c1.status(); // chamando um metodo 
         
-    }
-    
+    }    
 }
