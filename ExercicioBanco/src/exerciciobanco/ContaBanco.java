@@ -19,7 +19,7 @@ public class ContaBanco {
             this.saldo = saldo;
             this.status = false;
         } else {
-            System.out.println("Conta não aberta!\n");
+            System.out.println("Conta nao aberta!\n");
         }
     }
     
@@ -34,9 +34,9 @@ public class ContaBanco {
                 this.saldo = this.saldo + 150;
             }
         } else if (status == true){
-            System.out.println("Não foi possivel abrir sua conta!\nMotivo: Sua conta ja estava aberta.");
+            System.out.println("Nao foi possivel abrir sua conta!\nMotivo: Sua conta ja estava aberta.");
         } else if (valida == false){
-            System.out.println("Não foi possivel abrir sua conta!\nMotivo: Conta não valida.");
+            System.out.println("Nao foi possivel abrir sua conta!\nMotivo: Conta não valida.");
         }
     }
     public void fecharConta (){
@@ -44,21 +44,26 @@ public class ContaBanco {
            setStatus(false);
             System.out.println("Conta fechada com sucesso!");
         } else if (this.status == false){
-            System.out.println("Não foi possivel fechar sua conta!\nMotivo: Ela não está aberta.");
+            System.out.println("Nao foi possivel fechar sua conta!\nMotivo: Ela nao esta aberta.");
         } else if (this.saldo != 0f){
-            System.out.println("Não foi possivel fechar sua conta!\nMotivo: Saldo não é R$ 0,00.");
+            System.out.println("Nao foi possivel fechar sua conta!\nMotivo: Saldo nao e R$ 0,00.");
         } else if (this.valida == false){
-            System.out.println("Não foi possivel fechar sua conta!\nMotivo: Conta não valida.");
+            System.out.println("Nao foi possivel fechar sua conta!\nMotivo: Conta nao valida.");
         }
     }
     public void depositar (float valor){
-        this.saldo = this.saldo + valor;
+        if (this.getStatus()==true){
+            this.setSaldo(this.getSaldo() + valor);
+            System.out.println("Deposito de " + valor + " realizado com sucesso. Saldo atual: " + this.getSaldo());
+        } else {
+            System.out.println("Deposito nao realizado!\nMotivo: Conta nao aberta.");
+        }
     }
     public void sacar (float valor){
         if (status == true && valida == true){
             if (valor > saldo){
             System.out.println("Valor de saque maior que saldo disponivel!");
-            } else if (saldo > valor){
+            } else if (saldo >= valor){
                 this.saldo = this.saldo - valor;
                 System.out.println("Saque de " + valor + " realizado com sucesso! Saldo atual " + this.saldo);
             }   
@@ -71,6 +76,7 @@ public class ContaBanco {
         
     // printar e testar conta
     public void print (){
+        System.out.println("------------------------");
         System.out.println("Dono: " + this.dono);
         System.out.println("Numero da conta: " + this.numConta);
         System.out.println("Saldo: " + this.saldo);
@@ -78,7 +84,7 @@ public class ContaBanco {
             System.out.println("Status da conta: Aberta");
         } else {
             System.out.println("Status da conta: Fechada");
-        }           
+        }    
     }
     
     // getters e setters
