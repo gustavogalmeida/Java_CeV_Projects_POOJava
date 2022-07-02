@@ -1,4 +1,4 @@
-package aula07_relacionamento;
+package aula08_relacionamento;
 
 public class Lutador {
     private String nome;
